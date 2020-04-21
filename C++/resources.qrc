@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/tree.svg</file>
+        <file>images/network.svg</file>
+        <file>images/cnn.svg</file>
+        <file>images/svm.png</file>
+        <file>images/neural network.png</file>
+        <file>images/cnn.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>830</width>
+    <height>551</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>手写数字识别</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="DrawArea" name="draw_area" native="true">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>50</y>
+      <width>256</width>
+      <height>256</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid rgb(43, 42, 39);
+background-color: rgb(114, 159, 207);</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>120</y>
+      <width>131</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid #555;
+    border-radius: 20px;
+    border-style: outset;
+    background: rgba(114, 159, 207, 0.6);
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background: rgba(114, 159, 207, 0.8);
+}
+
+QPushButton:pressed {
+    border-style: inset;
+    background: rgba(114, 159, 207, 0.85);
+    }</string>
+    </property>
+    <property name="text">
+     <string>Save</string>
+    </property>
+   </widget>
+   <widget class="ResultShowArea" name="show_area" native="true">
+    <property name="geometry">
+     <rect>
+      <x>73</x>
+      <y>240</y>
+      <width>28</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(255, 255, 255) ;
+</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>330</y>
+      <width>131</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid #555;
+    border-radius: 20px;
+    border-style: outset;
+    background: rgba(114, 159, 207, 0.6);
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background: rgba(114, 159, 207, 0.8);
+}
+
+QPushButton:pressed {
+    border-style: inset;
+    background: rgba(114, 159, 207, 0.85);
+    }</string>
+    </property>
+    <property name="text">
+     <string>Reset</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="digit_label">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>443</y>
+      <width>111</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>30</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>-1</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="HoverableButton" name="pushButton_svm">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>373</y>
+      <width>60</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    color: #333;
+    border: none;
+    border-radius: 30px;
+    border-style: outset;
+    background: rgba(255, 191, 26, 153);
+	image:url(:/images/images/svm.png);
+    padding: 15px;
+}
+
+QPushButton:hover {
+    background: rgba(255, 191, 26, 200);
+}
+
+QPushButton:disabled{
+	
+	background-color: rgb(136, 138, 133);
+}
+
+QPushButton:pressed {
+    border-style: inset;
+    background: rgba(255, 191, 26, 220);
+    }</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="HoverableButton" name="pushButton_cnn">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>373</y>
+      <width>60</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    color: #333;
+    border: none;
+    border-radius: 30px;
+    border-style: outset;
+    background: rgba(241, 60, 20, 153);
+	image:url(:/images/images/cnn.png);
+    padding: 15px;
+}
+
+QPushButton:hover {
+    background: rgba(241, 60, 20, 200);
+}
+
+QPushButton:disabled{
+	
+	background-color: rgb(136, 138, 133);
+}
+
+QPushButton:pressed {
+    border-style: inset;
+    background: rgba(241, 60, 20, 220);
+    }</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="HoverableButton" name="pushButton_decisionTree">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>373</y>
+      <width>60</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    color: #333;
+    border: none;
+    border-radius: 30px;
+    border-style: outset;
+    background: rgba(134, 39, 230, 153);
+	image:url(:/images/images/tree.svg);
+    padding: 10px;
+}
+
+QPushButton:hover {
+    background: rgba(134, 39, 230, 200);
+}
+
+QPushButton:disabled{
+	
+	background-color: rgb(136, 138, 133);
+}
+
+QPushButton:pressed {
+    border-style: inset;
+    background: rgba(134, 39, 230, 220);
+    }</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>176</x>
+      <y>10</y>
+      <width>3</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    QFrame
+    {
+    	border:none;
+    	background-color:rgba(85, 87, 83, 0.6);
+    	max-width : 15px;
+    }</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
+     <rect>
+      <x>352</x>
+      <y>513</y>
+      <width>281</width>
+      <height>9</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
+   <widget class="HoverableButton" name="pushButton_simpleANN">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>373</y>
+      <width>60</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    color: #333;
+    border: none;
+    border-radius: 30px;
+    border-style: outset;
+    background: rgba(114, 159, 207, 0.6);
+	image:url(:/images/images/neural network.png);
+    padding: 12px;
+}
+
+QPushButton:hover {
+    background: rgba(114, 159, 207, 0.8);
+}
+
+QPushButton:disabled{
+	
+	background-color: rgb(136, 138, 133);
+}
+
+QPushButton:pressed {
+    border-style: inset;
+    background: rgba(114, 159, 207, 0.85);
+    }</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_prompt">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>320</y>
+      <width>421</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Please choose a classifer</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DrawArea</class>
+   <extends>QWidget</extends>
+   <header>DrawArea.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ResultShowArea</class>
+   <extends>QWidget</extends>
+   <header>ResultShowArea.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>HoverableButton</class>
+   <extends>QPushButton</extends>
+   <header>HoverableButton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onSaveButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>217</x>
+     <y>138</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>652</x>
+     <y>212</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onResetButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>487</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>581</x>
+     <y>216</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_simpleANN</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onSimpleAnnButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>502</x>
+     <y>282</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>656</x>
+     <y>280</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_svm</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onSvmButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>510</x>
+     <y>320</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>540</x>
+     <y>378</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_cnn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onCnnButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>473</x>
+     <y>339</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>442</x>
+     <y>430</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_decisionTree</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onDecisionTreeButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>437</x>
+     <y>376</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>539</x>
+     <y>418</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onSaveButtonClicked()</slot>
+  <slot>onResetButtonClicked()</slot>
+  <slot>onSimpleAnnButtonClicked()</slot>
+  <slot>onSvmButtonClicked()</slot>
+  <slot>onCnnButtonClicked()</slot>
+  <slot>onDecisionTreeButtonClicked()</slot>
+ </slots>
+</ui>
